@@ -1,0 +1,120 @@
+* {
+    scroll-behavior: smooth;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+    /* color: blue; */
+}
+
+.active {
+    border-bottom: 2px solid #e8464b;
+}
+
+/* Animation For On Hover Scale Images ----> 
+
+/* body,
+h1,
+h2,
+p {
+    font-family: "Ovo", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+} */
+
+.font_Sigmar {
+    font-family: "Sigmar", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.prata-regular {
+    font-family: "Prata", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body,
+h1,
+h2,
+p {
+    font-family: "Poppins", sans-serif;
+
+    font-style: normal;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    /* Change navigation arrow color */
+    background-color: rgba(30, 30, 30, 0.5);
+    /* Add background */
+    border-radius: 50%;
+    /* Make it circular */
+    padding: 35px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 15px;
+    /* Change arrow size */
+    color: white;
+    /* Arrow icon color */
+}
+
+/* Adjust for Desktop */
+@media (min-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 5px;
+        /* Standard arrow size */
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 30%;
+        height: 20px;
+        padding: 30px;
+        background-color: rgba(30, 30, 30, 0.7);
+        /* Slightly darker for visibility */
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 5px;
+        /* Smaller arrow size */
+    }
+}
+
+/* Hide Scrollbar Of Main Asider */
+#admin-main-outlet-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari */
+}
+#admin-main-outlet-container {
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Package Modal  */
+#packageModal {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}

@@ -72,7 +72,7 @@ const AdminPackages = () => {
     };
 
     // Create New Package Handler
-    const handleCreate = async (data) => {
+    const handleCreate = async (data, resetForm) => {
         const toastId = toast.loading("Creating Packges. Please Wait !");
         try {
             const ImageUrl = await uploadFile(data.ImageUrl[0]);
@@ -81,6 +81,7 @@ const AdminPackages = () => {
                 toast.success("Package Created successfully.");
                 dispatch(setIsPackagesLoaded(false));
                 setIsCreating(false);
+                resetForm();
             }
         } catch (error) {
             const err = handleApiError(

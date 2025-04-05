@@ -22,9 +22,12 @@ const PackageCard = ({ packageData, onEdit, onDelete, onPreview }) => {
                 <h3 className="text-lg font-semibold text-gray-800 truncate">
                     {packageData?.title}
                 </h3>
-                <p className="text-gray-600 text-sm mt-1 truncate">
-                    {packageData?.content}
-                </p>
+                <p
+                    className="text-gray-600 text-sm mt-1 truncate"
+                    dangerouslySetInnerHTML={{
+                        __html: packageData?.content?.slice(0, 50),
+                    }}
+                ></p>
 
                 {/* Package Info */}
                 <div className="flex items-center justify-between text-gray-600 text-sm mt-3">

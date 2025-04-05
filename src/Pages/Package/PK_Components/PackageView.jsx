@@ -48,7 +48,7 @@ const PackageView = () => {
     };
 
     return (
-        <div className="lg:w-[60%] w-full mx-auto flex flex-col gap-5 p-6 rounded-lg">
+        <div className="lg:w-[60%] w-full mx-auto flex flex-col gap-5 p-6 rounded-lg h-auto mt-30 ">
             {/* Modal for user details input */}
             {isModalOpen && (
                 <div

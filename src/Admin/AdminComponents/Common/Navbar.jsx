@@ -1,5 +1,6 @@
 import { FaSignOutAlt } from "react-icons/fa";
 
+import logo from "../../../../public/logo/GH_Logo.png";
 const Navbar = ({ handleLogout }) => {
     return (
         <nav className="bg-white shadow-md p-4 flex justify-between items-center">
@@ -9,12 +10,13 @@ const Navbar = ({ handleLogout }) => {
 
             {/* Admin Profile & Logout */}
             <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-gray-700">
-                    A
+                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center font-bold text-gray-700">
+                    <img
+                        src={logo}
+                        alt="ghoomokashi logo"
+                        className="object-cover w-full h-full"
+                    />
                 </div>
-                <span className="text-gray-700 font-semibold hidden md:inline">
-                    Admin
-                </span>
 
                 <button
                     onClick={handleLogout}

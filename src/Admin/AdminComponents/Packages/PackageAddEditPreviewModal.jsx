@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import TextInput from "../../../Components/Common/CustomInputs/TextInput";
@@ -7,10 +7,20 @@ import FileInput from "../../../Components/Common/CustomInputs/FileInput";
 import Button from "../Common/Button";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import ReactQuill from "react-quill";
 const ViewPackageModal = ({ onClose, packageData }) => {
+    useEffect(() => {
+        // Disable background scroll when modal opens
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, []);
+
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-white/40 backdrop-blur-xl z-50">
-            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-lg relative">
+        <div className="fixed inset-0 z-50 bg-white/40 backdrop-blur-xl flex items-center justify-center overflow-y-auto">
+            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-lg relative my-10">
+                {/* Header */}
                 <div className="flex justify-between items-center border-b border-gray-300 pb-3">
                     <h2 className="text-2xl font-semibold text-gray-900">
                         Package Details
@@ -22,7 +32,9 @@ const ViewPackageModal = ({ onClose, packageData }) => {
                         <IoClose size={24} />
                     </button>
                 </div>
-                <div className="mt-4 space-y-3 text-gray-800">
+
+                {/* Scrollable Content */}
+                <div className="mt-4 space-y-3 text-gray-800 max-h-[60vh] overflow-y-auto pr-2">
                     <p>
                         <strong className="opacity-80">Title:</strong>{" "}
                         {packageData?.title}
@@ -39,14 +51,20 @@ const ViewPackageModal = ({ onClose, packageData }) => {
                         <strong className="opacity-80">Destinations:</strong>{" "}
                         {packageData?.destination?.join(", ")}
                     </p>
-                    <div className="rounded-lg overflow-hidden shadow-md border border-gray-300">
-                        <img
-                            src={packageData?.ImageUrl}
-                            alt={packageData?.title}
-                            className="w-full h-52 object-cover object-center"
-                        />
-                    </div>
+
+                    {/* Image */}
+                    {packageData?.ImageUrl && (
+                        <div className="rounded-lg overflow-hidden shadow-md border border-gray-300">
+                            <img
+                                src={packageData.ImageUrl}
+                                alt={packageData.title}
+                                className="w-full h-52 object-cover object-center"
+                            />
+                        </div>
+                    )}
                 </div>
+
+                {/* Footer */}
                 <div className="flex justify-end mt-4">
                     <Button onClick={onClose} variant="primary" size="md">
                         Close
@@ -62,6 +80,8 @@ const EditPackageModal = ({ onClose, onSubmit, defaultValues }) => {
         register,
         handleSubmit,
         setValue,
+        reset,
+        control,
         formState: { errors },
     } = useForm({ defaultValues });
 
@@ -90,7 +110,7 @@ const EditPackageModal = ({ onClose, onSubmit, defaultValues }) => {
     const removeDestination = (index) => {
         setDestinations(destinations.filter((_, i) => i !== index));
     };
-
+    const [quillKey, setQuillKey] = useState(1);
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-white/40 backdrop-blur-xl z-50">
             <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-2xl relative max-h-[90vh] overflow-y-auto">
@@ -111,7 +131,10 @@ const EditPackageModal = ({ onClose, onSubmit, defaultValues }) => {
                         if (!destinations.length) {
                             return toast.error("Destination is required");
                         }
-                        onSubmit({ ...data, destination: destinations });
+                        onSubmit({ ...data, destination: destinations }, () => {
+                            setQuillKey(quillKey + 1);
+                            reset();
+                        });
                     })}
                     className="grid grid-cols-2 gap-4 mt-4"
                 >
@@ -138,13 +161,35 @@ const EditPackageModal = ({ onClose, onSubmit, defaultValues }) => {
                         required
                     />
                     <div className="col-span-2">
-                        <TextArea
-                            label="Description"
+                        <label className="block text-sm font-medium">
+                            Description
+                        </label>
+                        <Controller
+                            key={quillKey}
                             name="content"
-                            register={register}
-                            errors={errors}
-                            required
+                            control={control}
+                            rules={{
+                                required: "Content is required",
+                                minLength: {
+                                    value: 50,
+                                    message:
+                                        "Content should be at least 50 characters long",
+                                },
+                            }}
+                            render={({ field }) => (
+                                <ReactQuill
+                                    {...field}
+                                    theme="snow"
+                                    className="mt-2 p-2 border rounded-md"
+                                    placeholder="Write your Package content..."
+                                />
+                            )}
                         />
+                        {errors.content && (
+                            <p className="text-red-500 text-sm">
+                                {errors.content.message}
+                            </p>
+                        )}
                     </div>
                     {/* Destination Input Section */}
                     <div className="col-span-2 border-t border-gray-300 pt-4">
@@ -215,6 +260,8 @@ const CreatePackageModal = ({ onClose, onSubmit }) => {
     const {
         register,
         handleSubmit,
+        control,
+        reset,
         formState: { errors },
     } = useForm();
     const [destinations, setDestinations] = useState([]);
@@ -233,6 +280,7 @@ const CreatePackageModal = ({ onClose, onSubmit }) => {
         setDestinations(destinations.filter((_, i) => i !== index));
     };
 
+    const [quillKey, setQuillKey] = useState(1);
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-white/40 backdrop-blur-xl z-50">
             <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-2xl relative max-h-[90vh] overflow-y-auto">
@@ -254,7 +302,10 @@ const CreatePackageModal = ({ onClose, onSubmit }) => {
                         if (!destinations.length) {
                             return toast.error("Destination is required");
                         }
-                        onSubmit({ ...data, destination: destinations });
+                        onSubmit({ ...data, destination: destinations }, () => {
+                            reset();
+                            setQuillKey(quillKey + 1);
+                        });
                     })}
                     className="grid grid-cols-2 gap-4 mt-4"
                 >
@@ -290,16 +341,35 @@ const CreatePackageModal = ({ onClose, onSubmit }) => {
                     />
 
                     <div className="col-span-2">
-                        <TextArea
-                            label="Description"
+                        <label className="block text-sm font-medium">
+                            Description
+                        </label>
+                        <Controller
+                            key={quillKey}
                             name="content"
-                            register={register}
-                            errors={errors}
-                            required
-                            validation={{
-                                required: "Package Description  is required*",
+                            control={control}
+                            rules={{
+                                required: "Content is required",
+                                minLength: {
+                                    value: 50,
+                                    message:
+                                        "Content should be at least 50 characters long",
+                                },
                             }}
+                            render={({ field }) => (
+                                <ReactQuill
+                                    {...field}
+                                    theme="snow"
+                                    className="mt-2 p-2 border rounded-md"
+                                    placeholder="Write your Package content..."
+                                />
+                            )}
                         />
+                        {errors.content && (
+                            <p className="text-red-500 text-sm">
+                                {errors.content.message}
+                            </p>
+                        )}
                     </div>
 
                     {/* Destination Input Section */}

@@ -5,7 +5,7 @@ const Navbar = ({ handleLogout }) => {
     return (
         <nav className="bg-white shadow-md p-4 flex justify-between items-center">
             <h1 className="text-xl font-extrabold text-gray-700 uppercase italic ">
-                GhumoKashi
+                Ghumo Kashi
             </h1>
 
             {/* Admin Profile & Logout */}

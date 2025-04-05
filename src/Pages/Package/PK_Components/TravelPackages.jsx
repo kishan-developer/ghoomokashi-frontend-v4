@@ -40,22 +40,22 @@ export default function TravelPackages() {
                             key={pkg._id}
                             className="flex flex-col h-[540px] bg-white border border-gray-200 rounded-lg overflow-hidden transition-all hover:border-red-500"
                         >
-                            {/* Package Image */}
+                            {/* Image */}
                             <img
                                 src={pkg.ImageUrl}
                                 alt={pkg.title}
                                 className="w-full h-56 object-cover"
                             />
 
-                            {/* Content Wrapper */}
-                            <div className="flex flex-col flex-1 p-5 overflow-hidden">
+                            {/* Content */}
+                            <div className="flex flex-col flex-1 p-5">
                                 {/* Title */}
                                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                                     {pkg.title}
                                 </h3>
 
-                                {/* Description with scroll if too long */}
-                                <div className="text-sm text-gray-600 mb-3 overflow-y-auto max-h-[80px] pr-1">
+                                {/* Description (fixed height, no scroll, hides overflow text) */}
+                                <div className="text-sm text-gray-600 mb-3 h-[60px] overflow-hidden">
                                     {pkg.content}
                                 </div>
 
@@ -64,19 +64,19 @@ export default function TravelPackages() {
                                     🕒 {pkg.days}
                                 </p>
 
-                                {/* Destinations (scroll if many) */}
-                                <div className="flex flex-wrap gap-2 mb-4 overflow-y-auto max-h-[60px] pr-1 ">
+                                {/* Destinations (wrap, max height, overflow hidden) */}
+                                <div className="flex flex-wrap gap-2 mb-4 max-h-[48px] overflow-hidden">
                                     {pkg.destination.map((item, i) => (
                                         <span
                                             key={i}
-                                            className=" bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm"
+                                            className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm whitespace-nowrap"
                                         >
                                             {item}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* Buttons always at bottom */}
+                                {/* Buttons at Bottom */}
                                 <div className="mt-auto flex gap-3">
                                     <button
                                         onClick={() => handleData(pkg)}

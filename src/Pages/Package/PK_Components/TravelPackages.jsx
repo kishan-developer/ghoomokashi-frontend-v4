@@ -55,9 +55,12 @@ export default function TravelPackages() {
                                 </h3>
 
                                 {/* Description (fixed height, no scroll, hides overflow text) */}
-                                <div className="text-sm text-gray-600 mb-3 h-[60px] overflow-hidden">
-                                    {pkg.content}
-                                </div>
+                                <div
+                                    className="text-sm text-gray-600 mb-3 h-[60px] overflow-hidden"
+                                    dangerouslySetInnerHTML={{
+                                        __html: pkg?.content,
+                                    }}
+                                ></div>
 
                                 {/* Duration */}
                                 <p className="text-gray-700 text-sm font-medium mb-3">

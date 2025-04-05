@@ -41,7 +41,11 @@ const ViewPackageModal = ({ onClose, packageData }) => {
                     </p>
                     <p>
                         <strong className="opacity-80">Description:</strong>{" "}
-                        {packageData?.content}
+                        <span
+                            dangerouslySetInnerHTML={{
+                                __html: packageData?.content,
+                            }}
+                        ></span>
                     </p>
                     <p>
                         <strong className="opacity-80">Duration:</strong>{" "}

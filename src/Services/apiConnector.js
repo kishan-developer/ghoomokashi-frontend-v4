@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_REACT_APP_API_BASE_URL,
+    baseURL: 'https://final-gk.onrender.com/api',
     timeout: 15000,
 });
 

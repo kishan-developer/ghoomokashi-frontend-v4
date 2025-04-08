@@ -17,7 +17,7 @@ const Sidebar = ({ handleLogout }) => {
 
     return (
         <aside
-            className={` bg-[#E8464B] text-white min-h-screen  p-6 transition-all duration-300 relative ${
+            className={`bg-[#E8464B] text-white min-h-screen p-6 transition-all duration-300 relative flex flex-col ${
                 isOpen ? "w-64" : "w-28"
             }`}
         >
@@ -30,7 +30,7 @@ const Sidebar = ({ handleLogout }) => {
             </button>
 
             {/* Sidebar Links */}
-            <ul className="mt-10 space-y-4">
+            <ul className="mt-10 space-y-4 flex-grow">
                 <SidebarLink
                     to="/admin/dashboard"
                     icon={<FaTachometerAlt />}
@@ -57,10 +57,10 @@ const Sidebar = ({ handleLogout }) => {
                 />
             </ul>
 
-            {/* Logout Button */}
+            {/* Logout Button at Bottom */}
             <button
                 onClick={handleLogout}
-                className=" mt-64 flex items-center justify-center gap-2 bg-white text-[#E8464B] px-4 py-2 rounded-md font-semibold shadow-md hover:scale-105 transition w-full "
+                className="mt-auto flex items-center justify-center gap-2 bg-white text-[#E8464B] px-4 py-2 rounded-md font-semibold shadow-md hover:scale-105 transition w-full"
             >
                 <FaSignOutAlt /> {isOpen && "Logout"}
             </button>

@@ -41,7 +41,7 @@ const ViewServiceModal = ({ onClose, service }) => {
                         <img
                             src={service?.ImageUrl || "/public/placholder.jpg"}
                             alt={service?.title}
-                            className="w-full h-52 object-cover object-center"
+                            className="w-full h-72 object-cover object-center"
                             loading="lazy"
                         />
                     </div>

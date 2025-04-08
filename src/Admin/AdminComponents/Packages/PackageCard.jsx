@@ -14,7 +14,7 @@ const PackageCard = ({ packageData, onEdit, onDelete, onPreview }) => {
             <img
                 src={packageData?.ImageUrl || "/public/placholder.jpg"}
                 alt={packageData?.title}
-                className="w-full h-56 object-cover "
+                className="w-full h-[300px]  object-cover"
             />
 
             {/* Content */}

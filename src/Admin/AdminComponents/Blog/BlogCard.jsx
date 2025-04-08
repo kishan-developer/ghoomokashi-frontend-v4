@@ -16,7 +16,7 @@ const BlogCard = ({ blogData, onEdit, onDelete, onPreview }) => {
             <img
                 src={blogData?.ImageUrl || "/public/placholder.jpg"} // Default image fallback
                 alt={blogData?.title}
-                className="w-full h-56 object-cover"
+                className="w-full h-[300px]  object-cover"
                 loading="lazy"
             />
 

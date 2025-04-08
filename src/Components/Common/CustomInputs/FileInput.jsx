@@ -51,7 +51,7 @@ const FileInput = ({
                         src={preview || "/public/placholder.jpg"}
                         alt="Preview"
                         loading="lazy"
-                        className="w-full h-64 object-cover object-center rounded-lg shadow-md"
+                        className="w-full h-[350px]   object-cover rounded-lg shadow-md"
                     />
                 </div>
             )}

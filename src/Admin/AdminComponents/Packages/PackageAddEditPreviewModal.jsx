@@ -63,7 +63,7 @@ const ViewPackageModal = ({ onClose, packageData }) => {
                             <img
                                 src={packageData.ImageUrl}
                                 alt={packageData.title}
-                                className="w-full h-52 object-cover object-center"
+                                className="w-full h-72 object-cover object-center"
                             />
                         </div>
                     )}

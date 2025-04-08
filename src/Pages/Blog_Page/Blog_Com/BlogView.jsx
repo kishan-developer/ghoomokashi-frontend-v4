@@ -106,7 +106,7 @@ const BlogView = () => {
                                 src={blog.ImageUrl || "/public/placholder.jpg"}
                                 loading="lazy"
                                 alt={blog.title}
-                                className="w-full h-92 border object-cover rounded-md mt-5"
+                                className="w-full h-92  object-cover rounded-md mt-5"
                             />
                         )}
 

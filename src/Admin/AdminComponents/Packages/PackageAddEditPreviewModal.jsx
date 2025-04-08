@@ -8,6 +8,7 @@ import Button from "../Common/Button";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 const ViewPackageModal = ({ onClose, packageData }) => {
     useEffect(() => {
         // Disable background scroll when modal opens
@@ -144,7 +145,7 @@ const EditPackageModal = ({ onClose, onSubmit, defaultValues }) => {
                 >
                     <div className="col-span-2">
                         <FileInput
-                            label="Upload Image"
+                            label="Upload Image (Only JPG,JPEG,PNG allowed)*"
                             name="ImageUrl"
                             register={register}
                             preUrl={defaultValues?.ImageUrl}
@@ -315,7 +316,7 @@ const CreatePackageModal = ({ onClose, onSubmit }) => {
                 >
                     <div className="col-span-2">
                         <FileInput
-                            label="Upload Image"
+                            label="Upload Image (Only JPG,JPEG,PNG allowed)*"
                             name="ImageUrl"
                             register={register}
                             required

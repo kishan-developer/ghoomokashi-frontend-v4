@@ -1,24 +1,24 @@
-import { useState } from "react";
-const faqs = [
-    {
-        question: "What destinations do you offer?",
-        answer: "We offer travel packages to a wide range of destinations, including domestic and international locations.",
-    },
-    {
-        question: "Can I customize my travel itinerary?",
-        answer: "Yes, we provide personalized travel itineraries tailored to your preferences and budget.",
-    },
-    {
-        question: "What payment methods do you accept?",
-        answer: "We accept credit/debit cards, net banking, UPI, and digital wallets for secure payments.",
-    },
-    {
-        question: "How do I contact customer support?",
-        answer: "You can reach our support team via email, phone, or live chat on our website for assistance.",
-    },
-];
+import { useMemo, useState } from "react";
 
 function FAQSection() {
+    const faqs = useMemo(() => [
+        {
+            question: "What destinations do you offer?",
+            answer: "We offer travel packages to a wide range of destinations, including domestic and international locations.",
+        },
+        {
+            question: "Can I customize my travel itinerary?",
+            answer: "Yes, we provide personalized travel itineraries tailored to your preferences and budget.",
+        },
+        {
+            question: "What payment methods do you accept?",
+            answer: "We accept credit/debit cards, net banking, UPI, and digital wallets for secure payments.",
+        },
+        {
+            question: "How do I contact customer support?",
+            answer: "You can reach our support team via email, phone, or live chat on our website for assistance.",
+        },
+    ]);
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleFAQ = (index) => {

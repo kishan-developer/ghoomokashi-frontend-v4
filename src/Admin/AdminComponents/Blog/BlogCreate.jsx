@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import the styles for Quill
-
 import { FaTags } from "react-icons/fa";
 import TextInput from "../../../Components/Common/CustomInputs/TextInput";
 import { Controller, useForm } from "react-hook-form";
@@ -136,7 +135,7 @@ const BlogCreate = () => {
                 <div>
                     <FileInput
                         key={fileInputKey}
-                        label="Image"
+                        label="Upload Image (Only JPG,JPEG,PNG allowed)*"
                         name="ImageUrl"
                         register={register}
                         validation={{

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import SectionHeading from "../Common/SectionHeading";
 import { FaHotel } from "react-icons/fa6";
 import { FaSailboat } from "react-icons/fa6";
@@ -10,7 +10,7 @@ import { RiVipFill } from "react-icons/ri";
 import { AiFillCar } from "react-icons/ai";
 
 function Services_section() {
-    const cardData = [
+    const cardData = useMemo(() => [
         {
             id: 1,
             title: "Hotel Booking",
@@ -92,7 +92,7 @@ function Services_section() {
             price: 500,
             iconUrl: "/logo/temple.png",
         },
-    ];
+    ]);
 
     return (
         <div className="w-full flex flex-col gap-2 items-center justify-center py-5 ">
@@ -100,12 +100,6 @@ function Services_section() {
             <div className="w-[80%] h-[fit] lg:p-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   ">
                 {cardData?.map((item, i) => (
                     <div className="rounded-lg p-5 flex flex-col  gap-3 bg-gray-300 text-black  hover:text-white hover:bg-[#e8464b] items-start ease-in-out transition-all duration-200 cursor-pointer">
-                        {/* <img 
-                            className="w-[60px] h-[60px] rounded-full"
-                            src={item.imgUrl} 
-                            alt="bike" 
-                        /> */}
-
                         {item.icon ? (
                             <span className="w-[60px] h-[60px] rounded-full p-4 text-black text-[30px] bg-white">
                                 {item.icon}
@@ -114,8 +108,11 @@ function Services_section() {
                             <span className="flex flex-row gap-2 items-center p-2 bg-white rounded-full  text-black hover:text-[#e8464b] ">
                                 <img
                                     className="w-[40px] h-[40px] p-1 rounded-full"
-                                    src={item.iconUrl}
+                                    src={
+                                        item.iconUrl || "/public/placholder.jpg"
+                                    }
                                     alt="icon"
+                                    loading="lazy"
                                 />
                                 {/* <NavLink to={item.path}>{item.lable}</NavLink> */}
                             </span>

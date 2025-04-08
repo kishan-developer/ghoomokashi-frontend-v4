@@ -17,7 +17,7 @@ const Sidebar = ({ handleLogout }) => {
 
     return (
         <aside
-            className={`flex flex-col bg-[#E8464B] text-white min-h-screen p-6 transition-all duration-300 relative ${
+            className={` bg-[#E8464B] text-white min-h-screen  p-6 transition-all duration-300 relative ${
                 isOpen ? "w-64" : "w-28"
             }`}
         >
@@ -29,45 +29,41 @@ const Sidebar = ({ handleLogout }) => {
                 {isOpen ? <FaTimes /> : <FaBars />}
             </button>
 
-            {/* Top Content */}
-            <div className="flex-1">
-                <ul className="mt-10 space-y-4">
-                    <SidebarLink
-                        to="/admin/dashboard"
-                        icon={<FaTachometerAlt />}
-                        label="Dashboard"
-                        isOpen={isOpen}
-                    />
-                    <SidebarLink
-                        to="/admin/services"
-                        icon={<FaCog />}
-                        label="Services"
-                        isOpen={isOpen}
-                    />
-                    <SidebarLink
-                        to="/admin/packages"
-                        icon={<FaBox />}
-                        label="Packages"
-                        isOpen={isOpen}
-                    />
-                    <SidebarLink
-                        to="/admin/blog"
-                        icon={<FaBlogger />}
-                        label="Blog"
-                        isOpen={isOpen}
-                    />
-                </ul>
-            </div>
+            {/* Sidebar Links */}
+            <ul className="mt-10 space-y-4">
+                <SidebarLink
+                    to="/admin/dashboard"
+                    icon={<FaTachometerAlt />}
+                    label="Dashboard"
+                    isOpen={isOpen}
+                />
+                <SidebarLink
+                    to="/admin/services"
+                    icon={<FaCog />}
+                    label="Services"
+                    isOpen={isOpen}
+                />
+                <SidebarLink
+                    to="/admin/packages"
+                    icon={<FaBox />}
+                    label="Packages"
+                    isOpen={isOpen}
+                />
+                <SidebarLink
+                    to="/admin/blog"
+                    icon={<FaBlogger />}
+                    label="Blog"
+                    isOpen={isOpen}
+                />
+            </ul>
 
-            {/* Logout Button Pinned Bottom */}
-            <div className="mt-auto">
-                <button
-                    onClick={handleLogout}
-                    className="flex items-center justify-center gap-2 bg-white text-[#E8464B] px-4 py-2 rounded-md font-semibold shadow-md hover:scale-105 transition w-full"
-                >
-                    <FaSignOutAlt /> {isOpen && "Logout"}
-                </button>
-            </div>
+            {/* Logout Button */}
+            <button
+                onClick={handleLogout}
+                className=" mt-64 flex items-center justify-center gap-2 bg-white text-[#E8464B] px-4 py-2 rounded-md font-semibold shadow-md hover:scale-105 transition w-full "
+            >
+                <FaSignOutAlt /> {isOpen && "Logout"}
+            </button>
         </aside>
     );
 };

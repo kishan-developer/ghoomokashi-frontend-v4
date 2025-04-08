@@ -5,9 +5,10 @@ const ServiceCard = ({ service, onEdit, onDelete, onPreview }) => {
         <div className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-102">
             {/* Service Image */}
             <img
-                src={service?.ImageUrl}
+                src={service?.ImageUrl || "/public/placholder.jpg"}
                 alt={service?.title}
-                className="w-full h-40 object-cover"
+                className="w-full h-56 object-cover"
+                loading="lazy"
             />
 
             {/* Content */}

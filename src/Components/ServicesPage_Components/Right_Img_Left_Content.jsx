@@ -1,11 +1,14 @@
-export default function RightImageLeftContent({ item, onBook }) {
+import React from "react";
+
+const RightImageLeftContent = React.memo(({ item, onBook }) => {
     return (
         <div className="flex flex-col md:flex-row-reverse items-center w-[90%] max-w-5xl bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="w-full md:w-1/2 h-[300px]">
                 <img
-                    src={item.ImageUrl}
+                    src={item.ImageUrl || "/public/placholder.jpg"}
                     alt={item.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                 />
             </div>
             <div className="w-full md:w-1/2 p-6 flex flex-col justify-between">
@@ -20,4 +23,6 @@ export default function RightImageLeftContent({ item, onBook }) {
             </div>
         </div>
     );
-}
+});
+
+export default RightImageLeftContent;

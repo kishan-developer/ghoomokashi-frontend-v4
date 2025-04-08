@@ -3,10 +3,10 @@ import { FaCommentAlt } from "react-icons/fa";
 import SectionHeading from "../Common/SectionHeading";
 import LazyLoad from "react-lazyload";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 function Blog() {
     // THis Data Will Come Dynamically
-    const blogData = useSelector((state) => state.blogs.blogs);
+    const blogData = useSelector((state) => state.blogs.blogs, shallowEqual);
 
     return (
         <div className="w-full  py-5  flex items-center flex-col justify-center h-[fit] px-4">
@@ -20,17 +20,18 @@ function Blog() {
     );
 }
 
-const BlogCard = ({ item }) => {
+const BlogCard = React.memo(({ item }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:border-gray-400">
+        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:border-red-500">
             {/* Image */}
             <LazyLoad>
                 <img
-                    src={item.ImageUrl}
+                    src={item.ImageUrl || "/public/placholder.jpg"}
                     alt={item.title}
                     className="w-full h-48 object-cover"
+                    loading="lazy"
                 />
             </LazyLoad>
 
@@ -63,6 +64,6 @@ const BlogCard = ({ item }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Blog;

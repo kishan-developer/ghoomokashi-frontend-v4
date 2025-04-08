@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import SectionHeading from "../Common/SectionHeading";
 import LazyLoad from "react-lazyload";
 
 function Gallery() {
     const [data, setData] = useState();
 
-    const row1 = [
+    const row1 = useMemo(() => [
         {
             id: 1,
             url: "/gallery/Tr_306x364_gallerysec_1.1.jpg",
@@ -22,9 +22,9 @@ function Gallery() {
             id: 4,
             url: "/gallery/Tr_306x364_gallerysec_4.4.jpg",
         },
-    ];
+    ]);
 
-    const row2 = [
+    const row2 = useMemo(() => [
         {
             id: 2.1,
             url: "/gallery/Tr_415x322_gallerysec_4_415_.jpg",
@@ -37,9 +37,9 @@ function Gallery() {
             id: 2.3,
             url: "/gallery/Tr_415x322_gallerysec_3_.jpg",
         },
-    ];
+    ]);
 
-    const row3 = [
+    const row3 = useMemo(() => [
         {
             id: 5,
             url: "/gallery/Tr_306x364_gallerysec_10_.jpg",
@@ -56,46 +56,28 @@ function Gallery() {
             id: 8,
             url: "/gallery/Tr_306x364_gallerysec_8_.jpg",
         },
-    ];
+    ]);
 
     return (
-        <div className="w-[80%] py-5 flex flex-col items-center gap-5 ">
-            {/* <h2 className="w-full text-[30px] font-bold  ">Gallery</h2> */}
-            <SectionHeading text="gallery" />
+        <div className="w-[90%] mx-auto py-10 flex flex-col items-center gap-8">
+            <SectionHeading text="Gallery" />
 
-            <div className="w-full  h-fit flex flex-col gap-5">
-                <div className="firstRow w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  gap-5 ">
-                    {row1?.map((item, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+                {[...row1, ...row2, ...row3].map((item, i) => (
+                    <div
+                        key={i}
+                        className="relative overflow-hidden rounded-xl group aspect-[4/3] bg-gray-100"
+                    >
                         <LazyLoad>
                             <img
-                                className="hover:opacity-55 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
-                                src={item.url}
-                                alt="galleryImg"
+                                src={item.url || "/public/placholder.jpg"}
+                                alt={`galleryImg-${i}`}
+                                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:opacity-70"
+                                loading="lazy"
                             />
                         </LazyLoad>
-                    ))}
-                </div>
-
-                <div className="secondrow w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
-                    {row2?.map((item, i) => (
-                        <LazyLoad>
-                            <img
-                                className="hover:opacity-55 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
-                                src={item.url}
-                                alt="galleryImg"
-                            />
-                        </LazyLoad>
-                    ))}
-                </div>
-
-                <div className="firstRow w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-5 ">
-                    {row3?.map((item, i) => (
-                        <div
-                            className=" bg-center bg-cover h-[45vh] w-full hover:cursor-pointer flex items-center rounded-lg hover:opacity-75 justify-center transition-transform duration-300 ease-in-out hover:scale-105"
-                            style={{ backgroundImage: `url(${item.url})` }}
-                        ></div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

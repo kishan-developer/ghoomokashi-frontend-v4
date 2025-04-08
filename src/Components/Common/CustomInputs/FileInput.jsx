@@ -48,9 +48,10 @@ const FileInput = ({
             {preview && (
                 <div className="mt-2">
                     <img
-                        src={preview}
+                        src={preview || "/public/placholder.jpg"}
                         alt="Preview"
-                        className="w-full h-40 object-cover rounded-lg shadow-md"
+                        loading="lazy"
+                        className="w-full h-64 object-cover object-center rounded-lg shadow-md"
                     />
                 </div>
             )}

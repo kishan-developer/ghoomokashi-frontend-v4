@@ -12,9 +12,9 @@ const PackageCard = ({ packageData, onEdit, onDelete, onPreview }) => {
         <div className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-102">
             {/* Package Image */}
             <img
-                src={packageData?.ImageUrl || "/default-package.jpg"} // Default image fallback
+                src={packageData?.ImageUrl || "/public/placholder.jpg"}
                 alt={packageData?.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-56 object-cover "
             />
 
             {/* Content */}
@@ -34,12 +34,6 @@ const PackageCard = ({ packageData, onEdit, onDelete, onPreview }) => {
                     <div className="flex items-center gap-1">
                         <FaClock className="text-red-500" /> {packageData?.days}
                     </div>
-                </div>
-
-                {/* Destinations */}
-                <div className="mt-3 text-gray-500 text-sm">
-                    <FaMapMarkerAlt className="inline text-green-500 mr-1" />
-                    {packageData?.destination?.join(", ")}
                 </div>
 
                 {/* Action Buttons */}

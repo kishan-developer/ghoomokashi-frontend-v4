@@ -14,6 +14,7 @@ function Logo() {
                     className="lg:w-[80px] w-[50px] lg:h-[80px] h-[50px]"
                     src="/logo/GH_Logo.png"
                     alt="logo"
+                    loading="lazy"
                 />
                 <span className="text-lg font-semibold text-gray-800 capitalize">
                     Ghoomo Kashi

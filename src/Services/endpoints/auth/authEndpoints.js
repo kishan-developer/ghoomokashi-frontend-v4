@@ -1,3 +1,3 @@
 export const authEndpoints = {
-    login: `https://final-gk.onrender.com/api/auth/login`,
+    login: `https://ghoomokashi-bk.onrender.com/api/auth/login`,
 };

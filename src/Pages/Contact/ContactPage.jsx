@@ -36,7 +36,8 @@ function ContactPage() {
                                     Our Location
                                 </p>
                                 <p className="text-sm sm:text-lg">
-                                    2/5 Nati Imli,Ramanand Nagar Colony Varanasi Uttar Pradesh
+                                    Address : 2/5 Nati Imli, Ramanand Nagar
+                                    Colony, Varanasi, Uttar Pradesh
                                 </p>
                             </div>
                         </div>

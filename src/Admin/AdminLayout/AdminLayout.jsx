@@ -33,10 +33,10 @@ const AdminLayout = () => {
             <div className="flex-1 flex flex-col ">
                 <Navbar handleLogout={handleLogout} />
                 <main
-                    className="p-6  w-full h-screen overflow-y-scroll "
+                    className="p-6  w-full h-screen overflow-y-scroll"
                     id="admin-main-outlet-container"
                 >
-                    <div className="mx-auto max-w-7xl h-full">
+                    <div className="mx-auto max-w-7xl h-full ">
                         <Outlet />
                     </div>
                 </main>

@@ -11,6 +11,7 @@ function FirstSection() {
                 className="w-[100px] h-[100px] "
                 src="/logo/GH_Logo.png"
                 alt="logo"
+                loading="lazy"
             />
             <h2 className="text-[1.5rem] font-bold">Ghoomo Kashi</h2>
             <h2>

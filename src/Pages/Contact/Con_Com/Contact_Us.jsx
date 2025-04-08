@@ -79,22 +79,10 @@ const Contact_Us = () => {
                     Phone
                 </label>
                 <input
-                    type="phone"
+                    type="number"
+                    max="12"
                     {...register("from_phone", {
                         required: "Phone number is required",
-                        minLength: {
-                            value: 10,
-                            message: "Phone number must be 10 digits",
-                        },
-                        maxLength: {
-                            value: 10,
-                            message: "Phone number must be 10 digits",
-                        },
-                        pattern: {
-                            value: /^[1-9][0-9]{9}$/,
-                            message:
-                                "Phone number must be 10 digits, only numbers, and cannot start with 0",
-                        },
                     })}
                     className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                 />

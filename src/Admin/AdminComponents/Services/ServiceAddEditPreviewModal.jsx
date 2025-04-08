@@ -10,7 +10,7 @@ import Button from "../Common/Button";
 const ViewServiceModal = ({ onClose, service }) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-white/40 backdrop-blur-xl z-50">
-            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-lg relative">
+            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-lg relative max-h-[90vh] overflow-y-auto">
                 {/* Modal Header */}
                 <div className="flex justify-between items-center border-b border-gray-300 pb-3">
                     <h2 className="text-2xl font-semibold text-gray-900">
@@ -39,9 +39,10 @@ const ViewServiceModal = ({ onClose, service }) => {
                     {/* Image */}
                     <div className="rounded-lg overflow-hidden shadow-md border border-gray-300">
                         <img
-                            src={service?.ImageUrl}
+                            src={service?.ImageUrl || "/public/placholder.jpg"}
                             alt={service?.title}
                             className="w-full h-52 object-cover object-center"
+                            loading="lazy"
                         />
                     </div>
                 </div>
@@ -80,7 +81,7 @@ const EditServiceModal = ({ onClose, onSubmit, defaultValues }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-white/40 backdrop-blur-xl z-50">
-            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-md relative">
+            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-md relative max-h-[90vh] overflow-y-auto">
                 {/* Modal Header */}
                 <div className="flex justify-between items-center border-b border-gray-300 pb-3">
                     <h2 className="text-2xl font-semibold text-gray-900">
@@ -97,7 +98,7 @@ const EditServiceModal = ({ onClose, onSubmit, defaultValues }) => {
                 {/* Form */}
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="space-y-4 mt-4 "
+                    className="space-y-4 mt-4"
                 >
                     <TextInput
                         label="Service Title"
@@ -114,6 +115,7 @@ const EditServiceModal = ({ onClose, onSubmit, defaultValues }) => {
                         errors={errors}
                         required
                     />
+
                     <FileInput
                         label="Upload Image"
                         name="ImageUrl"
@@ -145,7 +147,7 @@ const CreateServiceModal = ({ onClose, onSubmit }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-white/40 backdrop-blur-xl z-50">
-            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-md relative">
+            <div className="bg-white/80 backdrop-blur-lg border border-gray-300 p-6 rounded-2xl shadow-2xl w-full max-w-md relative max-h-[90vh] overflow-y-auto">
                 {/* Modal Header */}
                 <div className="flex justify-between items-center border-b border-gray-300 pb-3">
                     <h2 className="text-2xl font-semibold text-gray-900">

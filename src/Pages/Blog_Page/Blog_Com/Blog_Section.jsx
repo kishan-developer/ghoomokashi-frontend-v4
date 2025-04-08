@@ -1,10 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import LazyLoad from "react-lazyload";
 
 const BlogSection = () => {
-    const blogData = useSelector((state) => state?.blogs?.blogs ?? []);
+    const blogData = useSelector(
+        (state) => state?.blogs?.blogs ?? [],
+        shallowEqual
+    );
 
     return (
         <section className="w-full py-12 px-4">
@@ -25,16 +28,17 @@ const BlogSection = () => {
     );
 };
 
-const BlogCard = ({ item }) => {
+const BlogCard = React.memo(({ item }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:border-gray-400">
+        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:border-red-500 ">
             {/* Image */}
             <LazyLoad>
                 <img
-                    src={item.ImageUrl}
+                    src={item.ImageUrl || "/public/placholder.jpg"}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-48 object-cover"
                 />
             </LazyLoad>
@@ -68,6 +72,5 @@ const BlogCard = ({ item }) => {
             </div>
         </div>
     );
-};
-
+});
 export default BlogSection;

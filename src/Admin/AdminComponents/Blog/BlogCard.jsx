@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
     FaEdit,
     FaTrash,
@@ -13,9 +14,10 @@ const BlogCard = ({ blogData, onEdit, onDelete, onPreview }) => {
         <div className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-102">
             {/* Blog Image */}
             <img
-                src={blogData?.ImageUrl || "/default-image.jpg"} // Default image fallback
+                src={blogData?.ImageUrl || "/public/placholder.jpg"} // Default image fallback
                 alt={blogData?.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-56 object-cover"
+                loading="lazy"
             />
 
             {/* Content */}

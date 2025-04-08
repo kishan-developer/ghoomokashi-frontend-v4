@@ -7,7 +7,11 @@ function Why() {
             <div className="flex lg:flex-row flex-col items-center justify-center bg-gray-100 rounded-lg h-full ">
                 <div className="left lg:w-[60%] w-[90%]  lg:h-[60vh] p-5  ">
                     <img
-                        src="/packages/Tr_500x500_package_card_3.svg"
+                        src={`${
+                            "/packages/Tr_500x500_package_card_3.svg" ||
+                            "/public/placholder.jpg"
+                        }`}
+                        loading="lazy"
                         alt="ghat"
                         className="w-[100%] h-[100%] rounded-md"
                     />
@@ -22,7 +26,8 @@ function Why() {
                         Trip with Us
                     </h2>
                     <p className="text-center text-gray-600">
-                        We make your trips to Varanasi, Prayagraj, Ayodhya And Gaya simple and enjoyable. Our easy booking system, many
+                        We make your trips to Varanasi, Prayagraj, Ayodhya And
+                        Gaya simple and enjoyable. Our easy booking system, many
                         pickup locations, and no hidden fees ensure a smooth
                         experience from start to finish. We offer reliable car
                         rentals and hotel bookings to meet your travel needs.

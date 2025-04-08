@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import parse, { domToReact } from "html-react-parser";
@@ -80,30 +80,33 @@ const BlogView = () => {
         });
     };
 
+    const isAdminRoute = useMemo(
+        () => location.pathname.startsWith("/admin"),
+        [location.pathname]
+    );
     return (
-        <div className="bg-white min-h-screen py-10 px-6">
+        <div
+            className={`bg-white min-h-screen py-10 px-6  ${
+                isAdminRoute ? "" : "mt-[60px] lg:mt-[80px]"
+            }}`}
+        >
             <div className="max-w-3xl mx-auto">
                 {/* Back Button */}
-                <button
-                    onClick={() => navigate(-1)}
-                    className="flex items-center text-gray-600 gap-2 text-base hover:text-blue-500 transition-all cursor-pointer"
-                >
-                    <FaArrowLeft /> Back
-                </button>
 
                 {blog ? (
                     <div className="mt-6">
                         {/* Blog Title */}
-                        <h1 className="text-3xl font-bold text-gray-900 leading-snug">
+                        <h1 className="text-lg  md:text-[1.7rem]  font-semibold text-gray-800 leading-snug ">
                             {blog.title}
                         </h1>
 
                         {/* Blog Image */}
                         {blog.ImageUrl && (
                             <img
-                                src={blog.ImageUrl}
+                                src={blog.ImageUrl || "/public/placholder.jpg"}
+                                loading="lazy"
                                 alt={blog.title}
-                                className="w-full h-64 object-cover rounded-md mt-5"
+                                className="w-full h-92 border object-cover rounded-md mt-5"
                             />
                         )}
 

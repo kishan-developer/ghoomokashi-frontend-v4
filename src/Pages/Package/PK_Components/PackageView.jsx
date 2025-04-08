@@ -48,79 +48,91 @@ const PackageView = () => {
     };
 
     return (
-        <div className="lg:w-[60%] w-full mx-auto flex flex-col gap-5 p-6 rounded-lg h-auto mt-30 ">
+        <div className="lg:w-[60%] w-full mx-auto flex flex-col gap-5 p-6 rounded-lg">
             {/* Modal for user details input */}
             {isModalOpen && (
                 <div
                     id="packageModal"
-                    className=" fixed inset-0 flex items-center justify-center "
+                    className="fixed inset-0 z-50 flex justify-center items-start sm:items-center overflow-y-auto sm:overflow-hidden bg-black/30 px-4"
                 >
-                    <div className="bg-white/90 bg-opacity-20 backdrop-blur-lg p-8 rounded-xl shadow-sm  w-[90%] md:w-[50%] lg:w-[40%] border border-white border-opacity-30">
-                        <h2 className="text-2xl font-bold mb-3 text-center text-gray-900">
-                            Welcome to Your Travel Experience
-                        </h2>
-                        <p className="text-center mb-5 text-gray-800">
-                            To proceed and explore your selected package, please
-                            enter your details below. Your information is safe
-                            with us.
-                        </p>
-                        <form
-                            onSubmit={handleSubmit(onSubmit)}
-                            className="flex flex-col gap-3"
-                        >
-                            {/* Custom Input Fields */}
-                            <TextInput
-                                label="Name"
-                                name="name"
-                                register={register}
-                                errors={errors}
-                                validation={{ required: "Name is required" }}
-                            />
-                            <TextInput
-                                label="Email"
-                                name="email"
-                                register={register}
-                                errors={errors}
-                                validation={{
-                                    required: "Email is required",
-                                    pattern: {
-                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                        message: "Invalid email format",
-                                    },
-                                }}
-                            />
-                            <TextInput
-                                label="Phone"
-                                name="phone"
-                                register={register}
-                                errors={errors}
-                                validation={{
-                                    required: "Phone number is required",
-                                    pattern: {
-                                        value: /^[0-9]{10}$/,
-                                        message: "Invalid phone number",
-                                    },
-                                }}
-                            />
+                    <div
+                        id="packageModalChild"
+                        className="flex flex-col justify-start sm:justify-center items-center w-full min-h-screen sm:min-h-0 sm:h-auto mt-28 md:mt-[100px] mb-10 sm:mb-0"
+                    >
+                        <div className="bg-white/90 backdrop-blur-lg border border-white border-opacity-30 p-6 rounded-xl shadow-md w-full max-w-lg">
+                            {/* Title */}
+                            <h2 className="text-2xl font-bold mb-3 text-center text-gray-900">
+                                Welcome to Your Travel Experience
+                            </h2>
 
-                            <button
-                                type="submit"
-                                className="bg-red-500 text-white px-6 py-2 rounded-lg text-lg font-semibold hover:bg-red-700"
+                            {/* Subtitle */}
+                            <p className="text-center mb-5 text-gray-800 text-sm">
+                                To proceed and explore your selected package,
+                                please enter your details below. Your
+                                information is safe with us.
+                            </p>
+
+                            {/* Form */}
+                            <form
+                                onSubmit={handleSubmit(onSubmit)}
+                                className="flex flex-col gap-3"
                             >
-                                Submit
-                            </button>
-                        </form>
+                                <TextInput
+                                    label="Name"
+                                    name="name"
+                                    register={register}
+                                    errors={errors}
+                                    validation={{
+                                        required: "Name is required",
+                                    }}
+                                />
+                                <TextInput
+                                    label="Email"
+                                    name="email"
+                                    register={register}
+                                    errors={errors}
+                                    validation={{
+                                        required: "Email is required",
+                                        pattern: {
+                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                            message: "Invalid email format",
+                                        },
+                                    }}
+                                />
+                                <TextInput
+                                    label="Phone"
+                                    name="phone"
+                                    register={register}
+                                    errors={errors}
+                                    validation={{
+                                        required: "Phone number is required",
+                                        pattern: {
+                                            value: /^[0-9]{10}$/,
+                                            message: "Invalid phone number",
+                                        },
+                                    }}
+                                />
+
+                                <button
+                                    type="submit"
+                                    className="bg-red-500 text-white px-6 py-2 rounded-lg text-lg font-semibold hover:bg-red-700"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             )}
 
             {/* Package Details */}
-            <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="bg-white p-4 rounded-lg shadow-sm mt-[80px]  lg:mt-[120px]">
                 <h1 className="lg:text-3xl text-[20px] font-bold text-gray-900 mb-4 text-center">
                     {data.name}
                 </h1>
                 <img
-                    src={data?.ImageUrl}
+                    src={data?.ImageUrl || "/public/placholder.jpg"}
+                    loading="lazy"
                     alt={data?.title}
                     className="w-full lg:h-100 object-cover rounded-md mb-6"
                 />
@@ -148,11 +160,7 @@ const PackageView = () => {
             <span className="bg-blue-100 px-3 py-1 rounded-md">
                 {data.days}
             </span>
-            <span
-                dangerouslySetInnerHTML={{
-                    __html: data?.content,
-                }}
-            ></span>
+            <span>{data.content}</span>
 
             {/* Book Now Button */}
             <div className="mt-6 text-center">

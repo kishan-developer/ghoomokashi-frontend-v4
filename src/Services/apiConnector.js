@@ -2,8 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://final-gk.onrender.com/api',
-    timeout: 15000,
+    baseURL: "https://ghoomokashi-bk.onrender.com",
+    timeout: 60000,
 });
 
 axiosInstance.interceptors.request.use(
@@ -23,7 +23,7 @@ export default axiosInstance;
 // Public Function Upload File
 export const uploadFile = async (image) => {
     const res = await axiosInstance.post(
-        "https://final-gk.onrender.com/api/img/uploadimg",
+        "https://ghoomokashi-bk.onrender.com/api/img/uploadimg",
         { image: image },
         {
             headers: {
@@ -31,6 +31,6 @@ export const uploadFile = async (image) => {
             },
         }
     );
-
-    return res.data.imgUrl;
+    console.log("response  Of image", res.data);
+    return res.data.imageUrl;
 };

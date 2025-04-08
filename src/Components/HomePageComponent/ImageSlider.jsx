@@ -8,7 +8,7 @@ const ImageSlider = () => {
                 loop
                 muted
                 playsInline
-                src="/ghoomokashi_banner.mp4" // Ensure the correct path & filename
+                src="/ghoomokashi_banner.mp4"
                 className="object-center object-cover h-full w-full"
             ></video>
 

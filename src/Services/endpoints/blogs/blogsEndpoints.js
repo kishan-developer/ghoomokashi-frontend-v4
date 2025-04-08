@@ -1,6 +1,7 @@
 export const blogEndpoints = {
-    getAllBlogs: "https://final-gk.onrender.com/api/blog/all",
-    editBlogById: (id) => `https://final-gk.onrender.com/api/blog/${id}`,
-    createBlog: "https://final-gk.onrender.com/api/blog/create",
-    deleteBlogById: (id) => `https://final-gk.onrender.com/api/blog/${id}`,
+    getAllBlogs: "https://ghoomokashi-bk.onrender.com/api/blog/all",
+    editBlogById: (id) => `https://ghoomokashi-bk.onrender.com/api/blog/${id}`,
+    createBlog: "https://ghoomokashi-bk.onrender.com/api/blog/create",
+    deleteBlogById: (id) =>
+        `https://ghoomokashi-bk.onrender.com/api/blog/${id}`,
 };

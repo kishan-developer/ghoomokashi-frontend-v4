@@ -110,7 +110,7 @@ const BlogEdit = () => {
     };
 
     return (
-        <div className="p-8 bg-white rounded-lg shadow-md">
+        <div className="p-8  rounded-lg shadow-md  bg-white">
             <h2 className="text-2xl font-semibold mb-4">Edit Blog</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <TextInput
@@ -146,7 +146,7 @@ const BlogEdit = () => {
 
                 <FileInput
                     key={fileInputKey}
-                    label="Change Image (Optional)"
+                    label="Change Image (Only JPG,JPEG,PNG allowed)*"
                     name="ImageUrl"
                     register={register}
                     errors={errors}

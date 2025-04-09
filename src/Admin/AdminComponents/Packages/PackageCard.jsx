@@ -6,6 +6,7 @@ import {
     FaUsers,
     FaClock,
 } from "react-icons/fa";
+import getPlainTextSnippet from "../../../Utils/getPlainText";
 
 const PackageCard = ({ packageData, onEdit, onDelete, onPreview }) => {
     return (
@@ -19,22 +20,19 @@ const PackageCard = ({ packageData, onEdit, onDelete, onPreview }) => {
 
             {/* Content */}
             <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800 truncate">
+                <h3 className="text-xl font-medium text-gray-800 truncate tracking-tighter mb-4">
                     {packageData?.title}
                 </h3>
-                <p
-                    className="text-gray-600 text-sm mt-1 truncate"
-                    dangerouslySetInnerHTML={{
-                        __html: packageData?.content?.slice(0, 50),
-                    }}
-                ></p>
 
+                <div className="text-gray-600 text-sm leading-tight text-left">
+                    {getPlainTextSnippet(packageData.content, 150)}
+                </div>
                 {/* Package Info */}
-                <div className="flex items-center justify-between text-gray-600 text-sm mt-3">
+                {/* <div className="flex items-center justify-between text-gray-600 text-sm mt-3">
                     <div className="flex items-center gap-1">
                         <FaClock className="text-red-500" /> {packageData?.days}
                     </div>
-                </div>
+                </div> */}
 
                 {/* Action Buttons */}
                 <div className="flex justify-between mt-4">

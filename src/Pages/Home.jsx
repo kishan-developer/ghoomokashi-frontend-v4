@@ -16,33 +16,46 @@ const Testimonials = lazy(() =>
 const FAQSection = lazy(() =>
     import("../Components/HomePageComponent/FAQSection")
 );
-
+const Loading = () => {
+    return (
+        <div className="flex flex-col items-center justify-center h-screen bg-white z-50">
+            {/* <img
+                src="/loading.gif"
+                alt="Loading animation"
+                className="w-40 h-40 object-contain"
+            /> */}
+            <p className="text-xl font-semibold text-gray-700 mt-4">
+                Loading your adventure...
+            </p>
+        </div>
+    );
+};
 function Home() {
     return (
         <div className="w-full flex flex-col items-center pb-10 z-0 ">
             {/* Image Slider */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <div className="w-full lg:h-screen h-[70vh]">
                     <ImageSlider />
                 </div>
             </Suspense>
 
             {/* Services Section */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <div className="w-full flex items-center justify-center">
                     <Services_section />
                 </div>
             </Suspense>
 
             {/* Gallery */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <div className="w-full flex items-center justify-center bg-gray-100">
                     <Gallery />
                 </div>
             </Suspense>
 
             {/* Blog */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <div className="w-full flex items-center justify-center">
                     <Blog />
                 </div>
@@ -71,19 +84,19 @@ function Home() {
             </div>
 
             {/* Why Section */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <div className="w-full flex items-center justify-center bg-gray-100">
                     <Why />
                 </div>
             </Suspense>
 
             {/* Testimonials */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <Testimonials />
             </Suspense>
 
             {/* FAQ */}
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading />}>
                 <FAQSection />
             </Suspense>
         </div>

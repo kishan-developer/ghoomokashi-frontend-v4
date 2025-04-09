@@ -16,7 +16,10 @@ function Logo() {
                     alt="logo"
                     loading="lazy"
                 />
-                <span className="text-lg font-semibold text-gray-800 capitalize">
+                <span
+                    className="text-lg font-semibold text-gray-800 capitalize"
+                    style={{ fontFamily: "'allright', sans-serif" }}
+                >
                     Ghoomo Kashi
                 </span>
             </LazyLoad>

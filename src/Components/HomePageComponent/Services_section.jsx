@@ -99,34 +99,33 @@ function Services_section() {
             <SectionHeading text={"Services"} />
             <div className="w-[80%] h-[fit] lg:p-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   ">
                 {cardData?.map((item, i) => (
-                    <div className="rounded-lg p-5 flex flex-col  gap-3 bg-gray-300 text-black  hover:text-white hover:bg-[#e8464b] items-start ease-in-out transition-all duration-200 cursor-pointer">
+                    <div className="rounded-xl p-5 flex flex-col gap-4 bg-white shadow-md hover:shadow-lg border border-gray-200 hover:border-[#e8464b] transition-all duration-300 cursor-pointer group">
+                        {/* Icon or Image */}
                         {item.icon ? (
-                            <span className="w-[60px] h-[60px] rounded-full p-4 text-black text-[30px] bg-white">
+                            <span className="w-14 h-14 flex items-center justify-center rounded-full text-[#e8464b] text-2xl bg-gray-100 group-hover:bg-[#e8464b] group-hover:text-white transition">
                                 {item.icon}
                             </span>
                         ) : (
-                            <span className="flex flex-row gap-2 items-center p-2 bg-white rounded-full  text-black hover:text-[#e8464b] ">
+                            <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gray-100 overflow-hidden">
                                 <img
-                                    className="w-[40px] h-[40px] p-1 rounded-full"
+                                    className="w-10 h-10 object-contain"
                                     src={
                                         item.iconUrl || "/public/placholder.jpg"
                                     }
                                     alt="icon"
                                     loading="lazy"
                                 />
-                                {/* <NavLink to={item.path}>{item.lable}</NavLink> */}
                             </span>
                         )}
 
-                        <div className="flex flex-col items-start w-full gap-0  px-2">
-                            <p className="text-[20px] mb-2">{item.title}</p>
-                            <p className="text-[15px]">{item.decription}</p>
-                            {/* <p className="text-end px-5 w-full  text-[16px] text-red-500">₹{item.price}</p> */}
-                            {/* <button
-                                onClick={() => navigate("/contact")}
-                                className="px-2 py-1 bg-black   text-white rounded-lg  mt-2 w-fit text-[14px] cursor-pointer">
-                                Book Now
-                            </button> */}
+                        {/* Text */}
+                        <div className="flex flex-col items-start w-full gap-1 px-1">
+                            <p className="text-lg font-semibold text-gray-800 group-hover:text-[#e8464b] transition">
+                                {item.title}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                                {item.decription}
+                            </p>
                         </div>
                     </div>
                 ))}

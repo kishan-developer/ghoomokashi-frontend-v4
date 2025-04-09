@@ -79,13 +79,30 @@ const Contact_Us = () => {
                     Phone
                 </label>
                 <input
-                    type="number"
-                    max="12"
+                    type="tel"
+                    maxLength={10}
                     {...register("from_phone", {
                         required: "Phone number is required",
+                        minLength: {
+                            value: 10,
+                            message: "Phone number must be 10 digits",
+                        },
+                        maxLength: {
+                            value: 10,
+                            message: "Phone number must be 10 digits",
+                        },
+                        pattern: {
+                            value: /^[1-9][0-9]{9}$/,
+                            message:
+                                "Phone number must be 10 digits and not start with 0",
+                        },
                     })}
+                    onInput={(e) => {
+                        e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    }}
                     className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                 />
+
                 {errors.from_phone && (
                     <p className="text-red-500 text-sm">
                         {errors.from_phone.message}

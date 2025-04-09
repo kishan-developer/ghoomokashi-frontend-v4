@@ -1,31 +1,29 @@
 import React from "react";
-import LazyLoad from "react-lazyload";
 
-function Why() {
+const Why = () => {
     return (
-        <div className="lg:w-[80%] w-[90%] lg:h-[70vh] h-fit py-5  ">
-            <div className="flex lg:flex-row flex-col items-center justify-center bg-gray-100 rounded-lg h-full ">
-                <div className="left lg:w-[60%] w-[90%]  lg:h-[60vh] p-5  ">
+        <div className="w-[90%] lg:w-[80%] mx-auto ">
+            <div className="flex flex-col lg:flex-row items-center  rounded-xl overflow-hidden">
+                {/* Left Image Section */}
+                <div className="w-full lg:w-1/2 h-[300px] lg:h-[400px]">
                     <img
-                        src={`${
-                            "/packages/Tr_500x500_package_card_3.svg" ||
-                            "/public/placholder.jpg"
-                        }`}
+                        src="/packages/Tr_500x500_package_card_3.webp"
+                        alt="Ghat"
                         loading="lazy"
-                        alt="ghat"
-                        className="w-[100%] h-[100%] rounded-md"
+                        className="w-full h-full object-cover"
                     />
                 </div>
 
-                <div className=" lg:w-[50%] w-[90%] py-10 flex flex-col items-start gap-2 ">
-                    <h2 className="font-bold text-[25px] text-center w-full text-gray-800">
+                {/* Text Content */}
+                <div className="w-full lg:w-1/2 p-6 text-center lg:text-left flex flex-col gap-4">
+                    <h2 className="text-2xl font-bold text-gray-800">
                         Why Choose Us?
                     </h2>
-                    <h2 className="font-semibold text-center text-[20px] text-gray-700">
-                        Why Book Your Varanasi, Prayagraj, Ayodhya And Gaya.
-                        Trip with Us
-                    </h2>
-                    <p className="text-center text-gray-600">
+                    <h3 className="text-lg font-medium text-gray-700">
+                        Why Book Your Varanasi, Prayagraj, Ayodhya And Gaya Trip
+                        with Us
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
                         We make your trips to Varanasi, Prayagraj, Ayodhya And
                         Gaya simple and enjoyable. Our easy booking system, many
                         pickup locations, and no hidden fees ensure a smooth
@@ -39,6 +37,6 @@ function Why() {
             </div>
         </div>
     );
-}
+};
 
 export default Why;

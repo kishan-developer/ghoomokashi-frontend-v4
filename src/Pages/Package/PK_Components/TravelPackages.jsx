@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
+import getPlainTextSnippet from "../../../Utils/getPlainText";
 
 export default function TravelPackages() {
     const navigate = useNavigate();
@@ -66,17 +67,9 @@ export default function TravelPackages() {
 
                                 {/* Description */}
                                 <div className="text-xs text-gray-600 flex-1 leading-relaxed">
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html:
-                                                (pkg?.content?.length > 150
-                                                    ? pkg?.content
-                                                          .slice(0, 150)
-                                                          .trim() + "..."
-                                                    : pkg?.content.trim()) ||
-                                                "",
-                                        }}
-                                    ></div>
+                                    <div>
+                                        {getPlainTextSnippet(pkg?.content, 150)}
+                                    </div>
                                 </div>
 
                                 {/* Action Buttons */}

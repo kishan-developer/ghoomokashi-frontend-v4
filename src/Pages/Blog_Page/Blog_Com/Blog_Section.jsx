@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import LazyLoad from "react-lazyload";
+import getPlainTextSnippet from "../../../Utils/getPlainText";
 
 const BlogSection = () => {
     const blogData = useSelector(
@@ -48,15 +49,12 @@ const BlogCard = React.memo(({ item }) => {
                 <p className="text-xs text-gray-500 mb-1">
                     {item.author?.name} • {item.author?.date}
                 </p>
-                <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">
+                <h3 className="text-lg font-medium text-gray-900 line-clamp-2 leading-tight">
                     {item.title}
                 </h3>
-                <p
-                    className="text-sm  text-gray-600 mt-2 line-clamp-3"
-                    dangerouslySetInnerHTML={{
-                        __html: item?.content,
-                    }}
-                ></p>
+                <p className="text-sm  text-gray-600 my-2 line-clamp-3">
+                    {getPlainTextSnippet(item?.content, 150)}
+                </p>
 
                 {/* Read More Button */}
                 <button

@@ -8,6 +8,7 @@ import {
     FaUsers,
     FaClock,
 } from "react-icons/fa";
+import getPlainTextSnippet from "../../../Utils/getPlainText";
 
 const BlogCard = ({ blogData, onEdit, onDelete, onPreview }) => {
     return (
@@ -28,22 +29,18 @@ const BlogCard = ({ blogData, onEdit, onDelete, onPreview }) => {
                 </h3>
 
                 {/* Blog Content */}
-                <p
-                    className="text-gray-600 text-sm mt-1 truncate"
-                    dangerouslySetInnerHTML={{
-                        __html: blogData?.content?.slice(0, 50),
-                    }}
-                ></p>
+                <p className="text-gray-600 text-sm mt-1">
+                    {getPlainTextSnippet(blogData.content, 150)}
+                </p>
 
-                {/* Blog Metadata */}
-                <div className="flex items-center justify-between text-gray-600 text-sm mt-3">
+                {/* <div className="flex items-center justify-between text-gray-600 text-sm mt-3">
                     <div className="flex items-center gap-1">
                         <FaClock className="text-red-500" />{" "}
                         {blogData?.author?.date}
                     </div>
                 </div>
 
-                {/* Tags */}
+              
                 <div className="mt-3 text-gray-500 text-sm">
                     {blogData?.tags?.map((tag, index) => (
                         <span
@@ -53,7 +50,7 @@ const BlogCard = ({ blogData, onEdit, onDelete, onPreview }) => {
                             {tag}
                         </span>
                     ))}
-                </div>
+                </div> */}
 
                 {/* Action Buttons */}
                 <div className="flex justify-between mt-4">

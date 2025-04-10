@@ -17,7 +17,7 @@ function FirstSection() {
             <h2>
                 At <b>Ghoomo Kashi</b>, we are passionate about helping you
                 explore the rich heritage and vibrant culture of Varanasi,
-                Prayagraj, Ayodhya And Gaya.
+                Prayagraj, Ayodhya and Gaya.
             </h2>
             <h3 className="w-full text-[20px] font-semibold">
                 Our Social Media

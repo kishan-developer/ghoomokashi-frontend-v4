@@ -6,7 +6,7 @@ import Contact_Us from "./Con_Com/Contact_Us";
 
 function ContactPage() {
     return (
-        <div className="min-h-screen lg:mt-50 mt-20 flex flex-col items-center">
+        <div className="min-h-screen lg:mt-50 mt-20 flex flex-col items-center ">
             {/* Banner Section */}
 
             {/* Contact Details & Form Section */}
@@ -75,11 +75,11 @@ function ContactPage() {
                 </div>
 
                 {/* Contact Form */}
-                <div className="w-full lg:w-[50%] bg-white md:shadow-lg rounded-2xl p-2 sm:p-8">
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
+                <div className="w-full lg:w-[50%] bg-white md:shadow-lg rounded-2xl p-2 sm:p-10 ">
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 lg:pl-0 pl-5">
                         Send Your Message!
                     </h2>
-                    <p className="text-gray-700 text-sm sm:text-base mb-4">
+                    <p className="text-gray-700 text-sm sm:text-base mb-4 lg:pl-0 pl-5">
                         We offer carefully curated destinations and tours that
                         capture the true essence of the location.
                     </p>

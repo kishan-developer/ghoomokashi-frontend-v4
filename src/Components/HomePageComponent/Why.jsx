@@ -2,7 +2,7 @@ import React from "react";
 
 const Why = () => {
     return (
-        <div className="w-[90%] lg:w-[80%] mx-auto ">
+        <div className="w-[90%] lg:w-[80%] mx-auto py-10">
             <div className="flex flex-col lg:flex-row items-center  rounded-xl overflow-hidden">
                 {/* Left Image Section */}
                 <div className="w-full lg:w-1/2 h-[300px] lg:h-[400px]">

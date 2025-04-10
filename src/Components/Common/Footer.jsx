@@ -9,7 +9,7 @@ function Footer() {
             </Suspense>
 
             <h3 className="w-full text-center flex items-center justify-center py-5 text-white lg:text-[16px] text-[15px] px-10 ">
-                Copyright 2021 | Made with ❤️ by Media FleetBlue.
+                Copyright 2021 | Made with ❤️ by <a href="https://www.mediafleetblue.com/">Media FleetBlue</a>.
             </h3>
         </div>
     );

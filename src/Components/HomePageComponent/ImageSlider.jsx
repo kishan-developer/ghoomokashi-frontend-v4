@@ -9,7 +9,8 @@ const ImageSlider = () => {
                 muted
                 playsInline
                 preload="none"
-                src="/ghoomokashi_banner.mp4"
+                // src="/ghoomokashi_banner.mp4"
+                src="https://res.cloudinary.com/ddrss0nel/video/upload/v1744184142/ghoomokashi_banner_svgsvg.mp4"
                 className="object-center object-cover h-full w-full"
             ></video>
 

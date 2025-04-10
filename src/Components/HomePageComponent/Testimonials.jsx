@@ -4,14 +4,14 @@ import LazyLoad from "react-lazyload";
 const Testimonials = () => {
     const testimonials = useMemo(() => [
         {
-            name: "Satyam hari",
+            name: "Satyam Hari",
             text: "The trip was well planned and comfortable. It was wonderful! Cab driver was excellent and the variety of venues and hotels was great.",
             location: "Delhi, India",
             image: "https://images.pexels.com/photos/938639/pexels-photo-938639.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         },
         {
             name: "Archita Upadhyay",
-            text: "They provide very good services.....enjoyed everything.....stay was totally perfect ..... definately try this!",
+            text: "They provide very good services.....enjoyed everything.....stay was totally perfect ..... definately try this.",
             location: "Mumbai, India",
             image: "/review/r_3.avif",
         },
@@ -61,7 +61,7 @@ const Testimonials = () => {
 
                             {/* Quote */}
                             <p className="text-gray-700 text-sm leading-relaxed italic">
-                                “{testimonial.text}”
+                                {testimonial.text}
                             </p>
                         </div>
                     ))}
